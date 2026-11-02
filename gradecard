@@ -1,0 +1,40 @@
+
+n = int(input("Enter the number of students: "))
+passed = 0
+failed = 0
+highest_average = -1
+top_students = []
+for i in range(n):
+    name, python, database, aptitude = input().split()
+    python = int(python)
+    database = int(database)
+    aptitude = int(aptitude)
+    average = (python + database + aptitude) / 3
+    if python >= 40 and database >= 40 and aptitude >= 40 and average >= 50:
+        result = "Passed"
+        passed += 1
+
+        if average >= 80:
+            grade = "A"
+        elif average >= 70:
+            grade = "B"
+        elif average >= 60:
+            grade = "C"
+        else:
+            grade = "D"
+
+        print(f"{name} - Average: {average:.2f} - {result} - Grade: {grade}")
+
+    else:
+        result = "Failed"
+        failed += 1
+        print(f"{name} - Average: {average:.2f} - {result}")
+    if average > highest_average:
+        highest_average = average
+        top_students = [name]
+    elif average == highest_average:
+        top_students.append(name)
+
+print("Passed:", passed)
+print("Failed:", failed)
+print("Top Performer:", ", ".join(top_students))

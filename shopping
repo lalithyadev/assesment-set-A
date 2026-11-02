@@ -1,0 +1,33 @@
+
+n = int(input("Enter number of products: "))
+products = []
+for i in range(n):
+    id, name, price, stock = input().split()
+    p = Product(int(id), name, float(price), int(stock))
+    products.append(p)
+cart = ShoppingCart()
+m = int(input("Enter number of operations: "))
+for i in range(m):
+    op = input().split()
+    if op[0] == "ADD":
+        pid = int(op[1])
+        qty = int(op[2])
+        for p in products:
+            if p.id == pid:
+                cart.add(p, qty)
+                break
+        else:
+            print("Product does not exist")
+    elif op[0] == "REMOVE":
+        pid = int(op[1])
+        qty = int(op[2])
+        for p in products:
+            if p.id == pid:
+                cart.remove(p, qty)
+                break
+        else:
+            print("Product does not exist")
+    elif op[0] == "TOTAL":
+        print("Total:", cart.total(products))
+    elif op[0] == "DISPLAY":
+        cart.display(products)

@@ -1,0 +1,24 @@
+
+Customer_name = input(" Customer name: ")
+units_consumed = int(input(" units: "))
+
+if units_consumed < 0:
+    print("Invalid units")
+else:
+    if units_consumed <= 100:
+        charge = 2
+    elif units_consumed <= 200:
+        charge = 3
+    elif units_consumed <= 400:
+        charge = 5
+    else:
+        charge = 7
+
+    electricity_charge = units_consumed * charge
+    service_charge = 50
+    total_bill = electricity_charge + service_charge
+
+    
+    print(f"Electricity Charge: {electricity_charge}")
+    print(f"Service Charge: {service_charge}")
+    print(f"Total Bill: {total_bill}")
